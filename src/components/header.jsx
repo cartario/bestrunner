@@ -9,7 +9,6 @@ const Wrapper = styled.header`
 
 const Nav = styled.nav`
   display: flex;  
-  font-weight: bold;
   color: black; 
   cursor: pointer; 
   background-color: ${props=>props.theme.bgc};  
