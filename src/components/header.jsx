@@ -3,15 +3,16 @@ import styled from 'styled-components';
 
 const Wrapper = styled.header`  
   text-align: center;
-  font-family: ${props=>props.theme.font};
-  background-color: white;  
+  font-family: ${props=>props.theme.font};  
 `;
 
 const Nav = styled.nav`
   display: flex;  
-  color: black; 
+  color: white; 
   cursor: pointer; 
-  background-color: ${props=>props.theme.bgc};  
+  background-color: ${props=>props.theme.secondary};  
+
+  
 `;
 
 const Logo = styled.div`
@@ -24,7 +25,7 @@ const Logo = styled.div`
   }
 
   &:active{
-    color: ${props=>props.theme.secondary};
+    color: white;
   }
   
   @media (max-width: ${props=>props.theme.mobile}) {
@@ -41,7 +42,7 @@ const Menu = styled.div`
   }
 
   &:active{
-    color: ${props=>props.theme.secondary};
+    color: white;
   }
     
   @media (max-width: ${props=>props.theme.mobile}){

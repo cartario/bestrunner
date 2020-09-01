@@ -6,8 +6,8 @@ import Footer from './footer';
 
 const theme = {
   primary: `#3B5AF5`,
-  secondary: `#F9057C`,
-  bgc: `lightgrey`,
+  secondary: `tomato`,
+  bgc: `white`,
   mobile: `660px`,
   font: `Poppins`,
 };

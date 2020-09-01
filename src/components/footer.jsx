@@ -1,12 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Wrapper = styled.footer`
-  margin-top: 15px;
+const Wrapper = styled.footer` 
   text-align: center;
   font-family: ${props=>props.theme.font};
-  background-color: ${props=>props.theme.bgc};
-  color: black;
+  background-color: ${props=>props.theme.secondary};
+  color: white;
 `;
 
 const List = styled.ul`
@@ -30,7 +29,7 @@ const Item = styled.li`
   }
 
   &:active{
-    color: ${props=>props.theme.secondary};
+    color: white;
   }
 `;
 
