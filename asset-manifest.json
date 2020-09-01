@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/bestrunner/static/css/main.69eda509.chunk.css",
-    "main.js": "/bestrunner/static/js/main.94d3357e.chunk.js",
-    "main.js.map": "/bestrunner/static/js/main.94d3357e.chunk.js.map",
+    "main.js": "/bestrunner/static/js/main.7b569ea7.chunk.js",
+    "main.js.map": "/bestrunner/static/js/main.7b569ea7.chunk.js.map",
     "runtime-main.js": "/bestrunner/static/js/runtime-main.52de4ca4.js",
     "runtime-main.js.map": "/bestrunner/static/js/runtime-main.52de4ca4.js.map",
     "static/js/2.23b94ee4.chunk.js": "/bestrunner/static/js/2.23b94ee4.chunk.js",
     "static/js/2.23b94ee4.chunk.js.map": "/bestrunner/static/js/2.23b94ee4.chunk.js.map",
     "index.html": "/bestrunner/index.html",
-    "precache-manifest.557bb4ccb9e510b91806e71e334d9742.js": "/bestrunner/precache-manifest.557bb4ccb9e510b91806e71e334d9742.js",
+    "precache-manifest.622d733feead951b5241ed96aedd9e52.js": "/bestrunner/precache-manifest.622d733feead951b5241ed96aedd9e52.js",
     "service-worker.js": "/bestrunner/service-worker.js",
     "static/css/main.69eda509.chunk.css.map": "/bestrunner/static/css/main.69eda509.chunk.css.map",
     "static/js/2.23b94ee4.chunk.js.LICENSE.txt": "/bestrunner/static/js/2.23b94ee4.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.52de4ca4.js",
     "static/js/2.23b94ee4.chunk.js",
     "static/css/main.69eda509.chunk.css",
-    "static/js/main.94d3357e.chunk.js"
+    "static/js/main.7b569ea7.chunk.js"
   ]
 }
