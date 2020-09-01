@@ -7,6 +7,7 @@ import Footer from './footer';
 const theme = {
   primary: `#3B5AF5`,
   secondary: `tomato`,
+  pink: `#F9057C`,
   bgc: `white`,
   mobile: `660px`,
   font: `Poppins`,

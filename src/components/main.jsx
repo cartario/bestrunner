@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Sessions from './sessions';
 import Filter from './filter';
 import Chart from './chart';
+import CreateSession from './create-session';
 
 const Wrapper = styled.main`  
 
@@ -18,6 +19,7 @@ const Main = () => {
       <Filter/>
       <Sessions/>
       <Chart/>
+      <CreateSession/>
     </Wrapper>
   );
 };
