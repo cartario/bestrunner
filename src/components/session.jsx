@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const Session = styled.li`
   display: flex;
   justify-content: space-between;  
-  margin: 10px;
+  margin: 20px;
   padding: 10px;
   text-align: center;  
   color: ${props=>props.theme.secondary};
@@ -30,7 +30,7 @@ const Type = styled.p`
   width: 40%;
   display: inline-block;  
   margin: 0;
-  font-size: 30px;
+  font-size: 1.5rem;
   border: 1px dashed black;
   border-radius: 5px;
   color: black;  
