@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/bestrunner/static/css/main.5f361e03.chunk.css",
+    "main.js": "/bestrunner/static/js/main.0b99d11e.chunk.js",
+    "main.js.map": "/bestrunner/static/js/main.0b99d11e.chunk.js.map",
+    "runtime-main.js": "/bestrunner/static/js/runtime-main.52de4ca4.js",
+    "runtime-main.js.map": "/bestrunner/static/js/runtime-main.52de4ca4.js.map",
+    "static/js/2.e80b27d8.chunk.js": "/bestrunner/static/js/2.e80b27d8.chunk.js",
+    "static/js/2.e80b27d8.chunk.js.map": "/bestrunner/static/js/2.e80b27d8.chunk.js.map",
+    "index.html": "/bestrunner/index.html",
+    "precache-manifest.08398bca8880b5324a6d5254b24c312b.js": "/bestrunner/precache-manifest.08398bca8880b5324a6d5254b24c312b.js",
+    "service-worker.js": "/bestrunner/service-worker.js",
+    "static/css/main.5f361e03.chunk.css.map": "/bestrunner/static/css/main.5f361e03.chunk.css.map",
+    "static/js/2.e80b27d8.chunk.js.LICENSE.txt": "/bestrunner/static/js/2.e80b27d8.chunk.js.LICENSE.txt",
+    "static/media/logo.svg": "/bestrunner/static/media/logo.5d5d9eef.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.52de4ca4.js",
+    "static/js/2.e80b27d8.chunk.js",
+    "static/css/main.5f361e03.chunk.css",
+    "static/js/main.0b99d11e.chunk.js"
+  ]
+}
