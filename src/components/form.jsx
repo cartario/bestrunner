@@ -47,7 +47,7 @@ class Form extends React.Component {
       <Wrapper>
         <Inner>
           <form onSubmit={togglePopupHandler}>
-            <h1>{currentSession.type}</h1>
+            <h2>{currentSession.type}</h2>
             <a href="#" onClick={togglePopupHandler}>Go-back</a>
             <p>{currentSession.date.getFullYear()}</p>
             <p>{currentSession.distance}</p>

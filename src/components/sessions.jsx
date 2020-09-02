@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Session from './session';
 import Form from './form';
 
-const mocks = [
+export const mocks = [
   {
     id: 1,
     type: `Велосипед`,

@@ -5,6 +5,7 @@ const Session = styled.li`
   display: flex;
   justify-content: space-between;  
   max-height: 50px;
+  margin: 5px 0; 
   padding: 10px;
   text-align: left;  
   
@@ -29,7 +30,7 @@ const Date = styled.span`
 
 const Type = styled.p`
   width: 40%;
-  height: 30px;
+  height: 50px;
   display: inline-block;  
   margin: 0;  
   

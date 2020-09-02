@@ -1,8 +1,10 @@
 import React from 'react';
+import {HashRouter, Route} from 'react-router-dom';
 import {ThemeProvider} from 'styled-components';
 import Header from './header';
 import Main from './main'
 import Footer from './footer';
+import CreateSession from './create-session';
 
 const theme = {
   primary: `#3B5AF5`,
@@ -17,13 +19,18 @@ const theme = {
 
 const App = () => {
   return (
-    <ThemeProvider theme={theme}>
-      
+    <HashRouter >
+    <ThemeProvider theme={theme}>      
         <Header/>
-        <Main/>
-        <Footer/>
-      
+        <Route exact path="/">
+          <Main/>
+        </Route>
+        <Route exact path="/new">
+          <CreateSession/>
+        </Route>        
+        <Footer/>      
     </ThemeProvider>
+    </HashRouter>
   );
 }
 
