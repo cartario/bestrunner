@@ -22,7 +22,13 @@ export default class extends React.Component {
 
   _submitHandler(e){
     e.preventDefault();
-    
+    this.props.createSession({
+      id: 102,
+      type: this.state.type,
+      distance: this.state.distance,
+      comment: this.state.comment,
+      date: new Date(),
+    })    
   }
 
   _changeHandler(e){

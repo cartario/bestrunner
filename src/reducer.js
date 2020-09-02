@@ -1,5 +1,6 @@
 import {extend, adapter} from './utils.js';
 import {sessions} from './mock';
+import {history} from "./history.js";
 
 const initialState = {
   isDataReady: false,
@@ -9,6 +10,7 @@ const initialState = {
 const ActionType = {
   IS_DATA_READY: `IS_DATA_READY`,
   LOAD_SESSIONS: `LOAD_SESSIONS`,
+  CREATE_SESSION: `CREATE_SESSION`,
 };
 
 export const ActionCreator = {
@@ -17,16 +19,21 @@ export const ActionCreator = {
     payload: value,
   }),  
   loadSessions: (sessions) => ({
-    type: `LOAD_SESSIONS`,
+    type: ActionType.LOAD_SESSIONS,
     payload: sessions,
-  }),  
+  }),
+  createSession: (session) => ({
+    type: ActionType.CREATE_SESSION,
+    payload: session,
+  }), 
 };
 
 export const Operation = {
   loadSessions: () => (dispatch, getState, api) => {    
     return api.get(`/users?page=2`).then((response) => {          
       dispatch(ActionCreator.loadSessions(adapter(response.data.data)));
-      dispatch(ActionCreator.setIsDataReady(true));           
+      dispatch(ActionCreator.setIsDataReady(true));
+                
     })
     .catch((err) => {      
       throw err;
@@ -42,8 +49,9 @@ export const reducer = (state = initialState, action) => {
   case ActionType.LOAD_SESSIONS:
     return extend(state, {sessions: [...state.sessions, ...action.payload]});
 
-  case ActionType.SET_ACTIVE_FLIGHT:
-    return extend(state, {flights: action.payload});
+  case ActionType.CREATE_SESSION:
+    history.goBack(); 
+    return extend(state, {sessions: [...state.sessions, action.payload]});
 
     default:
       return state;

@@ -7,6 +7,8 @@ import Footer from './footer';
 import CreateSession from './create-session';
 import Preloader from './preloader';
 import { connect } from 'react-redux';
+import {ActionCreator, Operation} from '../reducer';
+import {history} from '../history.js';
 
 const theme = {
   primary: `#3B5AF5`,
@@ -18,20 +20,20 @@ const theme = {
 };
 
 const App = (props) => {
-  const {isDataReady, sessions} = props;  
+  const {isDataReady, sessions, createSession} = props;  
   if (!isDataReady) {
     return <Preloader/>;
   }
 
   return (
-    <HashRouter >
+    <HashRouter history={history}>
     <ThemeProvider theme={theme}>      
         <Header/>
         <Route exact path="/">
           <Main sessions = {sessions}/>
         </Route>
         <Route exact path="/new">
-          <CreateSession/>
+          <CreateSession createSession={createSession}/>
         </Route>        
         <Footer/>      
     </ThemeProvider>
@@ -44,5 +46,11 @@ const mapStateToProps = (state) => ({
   sessions: state.SESSIONS.sessions,
 });
 
+const mapDispatchToProps = (dispatch) => ({
+  createSession(newSession) {
+    dispatch(ActionCreator.createSession(newSession));
+  },
+});
+
 export {App};
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
