@@ -45,13 +45,13 @@ const Info = styled.div`
   width: 15%;
 `;
 
-export default ({mock}) => {
+export default ({mock, togglePopupHandler}) => {
   return (
     <Session>      
       <Type>{mock.type}</Type>
       <Date>{mock.date.getFullYear()}</Date>
       <Distance>{mock.distance}km</Distance>
-      <Info onClick={()=>console.log(`info${mock.id}`)}>
+      <Info onClick={()=>togglePopupHandler(mock.id)}>
         <img width="15" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Info_Simple_bw.svg/768px-Info_Simple_bw.svg.png"/>
       </Info>
     </Session>

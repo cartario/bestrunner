@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Session from './session';
+import Form from './form';
 
 const mocks = [
   {
@@ -35,18 +36,46 @@ const mocks = [
   }
 ];
 
+const sessions = mocks;
+
 const List = styled.ul`
   margin:0;
   padding:0;
   list-style: none;
 `;
 
-const Sessions = () => {
-  return (
-    <List>
-      {mocks.map((item)=><Session key={item.id} mock={item}/>)}
+class Sessions extends React.Component {
+  constructor(props){
+    super(props);
+
+    this.state = {
+      showPopup: false,
+      currentId: 0,
+    };
+
+    this._togglePopup = this._togglePopup.bind(this);
+  }
+
+  _togglePopup(id){
+    this.setState({
+      showPopup: !this.state.showPopup,
+      currentId: id,
+    })
+  }
+
+  render(){
+    return (
+      <List>
+      {sessions.map((session)=><Session 
+        key={session.id}
+        mock={session}
+        togglePopupHandler = {this._togglePopup}
+        />)}
+
+        {this.state.showPopup && <Form currentId={this.state.currentId} sessions={sessions} togglePopupHandler = {this._togglePopup}/>}
     </List>
-  );
+    );
+  }
 };
 
 export default Sessions;
