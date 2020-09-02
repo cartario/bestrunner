@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/bestrunner/static/css/main.69eda509.chunk.css",
-    "main.js": "/bestrunner/static/js/main.52a15ef4.chunk.js",
-    "main.js.map": "/bestrunner/static/js/main.52a15ef4.chunk.js.map",
+    "main.css": "/bestrunner/static/css/main.5ecd60fb.chunk.css",
+    "main.js": "/bestrunner/static/js/main.a72839b7.chunk.js",
+    "main.js.map": "/bestrunner/static/js/main.a72839b7.chunk.js.map",
     "runtime-main.js": "/bestrunner/static/js/runtime-main.52de4ca4.js",
     "runtime-main.js.map": "/bestrunner/static/js/runtime-main.52de4ca4.js.map",
     "static/js/2.4f2abc28.chunk.js": "/bestrunner/static/js/2.4f2abc28.chunk.js",
     "static/js/2.4f2abc28.chunk.js.map": "/bestrunner/static/js/2.4f2abc28.chunk.js.map",
     "index.html": "/bestrunner/index.html",
-    "precache-manifest.9ee77b01133030e406be09cba1a53239.js": "/bestrunner/precache-manifest.9ee77b01133030e406be09cba1a53239.js",
+    "precache-manifest.ec92fb1140abd03971d47aedf6ee9936.js": "/bestrunner/precache-manifest.ec92fb1140abd03971d47aedf6ee9936.js",
     "service-worker.js": "/bestrunner/service-worker.js",
-    "static/css/main.69eda509.chunk.css.map": "/bestrunner/static/css/main.69eda509.chunk.css.map",
+    "static/css/main.5ecd60fb.chunk.css.map": "/bestrunner/static/css/main.5ecd60fb.chunk.css.map",
     "static/js/2.4f2abc28.chunk.js.LICENSE.txt": "/bestrunner/static/js/2.4f2abc28.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.52de4ca4.js",
     "static/js/2.4f2abc28.chunk.js",
-    "static/css/main.69eda509.chunk.css",
-    "static/js/main.52a15ef4.chunk.js"
+    "static/css/main.5ecd60fb.chunk.css",
+    "static/js/main.a72839b7.chunk.js"
   ]
 }
