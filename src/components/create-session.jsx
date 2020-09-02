@@ -10,7 +10,7 @@ const Wrapper = styled.button`
   width: 100px;
   height: 100px;
   font-size: 50px;
-  background-color: ${props=>props.theme.primary};
+  background-color: ${props=>props.theme.pink};
   outline: none;
   border: none;
   color: white;
@@ -22,7 +22,7 @@ const Wrapper = styled.button`
   }
 
   &:active{
-    background-color: ${props=>props.theme.pink};
+    background-color: grey;
   }
 `;
 

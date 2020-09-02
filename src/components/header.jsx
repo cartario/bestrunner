@@ -10,7 +10,7 @@ const Nav = styled.nav`
   display: flex;  
   color: white; 
   cursor: pointer; 
-  background-color: ${props=>props.theme.secondary};  
+  background-color: ${props=>props.theme.primary};  
 
   
 `;
@@ -21,7 +21,7 @@ const Logo = styled.div`
   border: 1px solid white;  
 
   &:hover{
-    color: ${props=>props.theme.primary};
+    color: ${props=>props.theme.secondary};
   }
 
   &:active{
@@ -35,10 +35,11 @@ const Logo = styled.div`
 const Menu = styled.div`
   width: 90%;
   padding: 10px;
+  font-weight: bold;
   border: 1px solid white;
 
   &:hover{
-    color: ${props=>props.theme.primary};
+    color: ${props=>props.theme.secondary};
   }
 
   &:active{
@@ -56,7 +57,7 @@ const Header = () => {
     <Wrapper>
       <Nav>
         <Logo>[Logo]</Logo>
-        <Menu>[Menu]</Menu>
+        <Menu>[BEST RUNNER]</Menu>
       </Nav>
     </Wrapper>
   );

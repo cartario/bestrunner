@@ -9,13 +9,13 @@ const Wrapper = styled.main`
 
   text-align: center;
   font-family: ${props=>props.theme.font}; 
-  background-color: lightgrey; 
+  background-color: white; 
 `;
 
 const Main = () => {
   return (
     <Wrapper>
-      <h1 style={{margin:0, padding: `20px`}}>BestRunner</h1>
+      <h1 style={{display: `none`}}>BestRunner</h1>
       <Filter/>
       <Sessions/>
       <Chart/>

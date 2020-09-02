@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const Wrapper = styled.footer` 
   text-align: center;
   font-family: ${props=>props.theme.font};
-  background-color: ${props=>props.theme.secondary};
+  background-color: ${props=>props.theme.primary};
   color: white;
 `;
 
@@ -25,7 +25,7 @@ const Item = styled.li`
   cursor: pointer;
 
   &:hover{
-    color: ${props=>props.theme.primary};
+    color: ${props=>props.theme.secondary};
   }
 
   &:active{
