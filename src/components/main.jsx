@@ -37,12 +37,13 @@ const Button = styled.button`
   }
 `;
 
-const Main = () => {
+const Main = ({sessions}) => {
+  
   return (
     <Wrapper>
       <h1 style={{display: `none`}}>BestRunner</h1>
       <Filter/>
-      <Sessions/>
+      <Sessions sessions = {sessions}/>
       <Chart/>      
       <Link to="/new">
         <Button onClick={()=>console.log(`plus`)}>+</Button>
