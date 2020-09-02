@@ -17,8 +17,7 @@ export default class extends React.Component {
     };
 
     this._changeHandler = this._changeHandler.bind(this);
-    this._submitHandler = this._submitHandler.bind(this);
-    
+    this._submitHandler = this._submitHandler.bind(this);    
   }
 
   _submitHandler(e){

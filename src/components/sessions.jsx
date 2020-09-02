@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
 import Session from './session';
 import Form from './form';
@@ -44,38 +44,60 @@ const List = styled.ul`
   list-style: none;
 `;
 
-class Sessions extends React.Component {
-  constructor(props){
-    super(props);
+const Sessions = (props) => {
+  const [showPopup, setShowPopup] = useState(false);
+  const [currentId, setCurrentId] = useState(0);
 
-    this.state = {
-      showPopup: false,
-      currentId: 0,
-    };
+  const togglePopup = (id) => {
+    setShowPopup(!showPopup);
+    setCurrentId(id);
+  };
 
-    this._togglePopup = this._togglePopup.bind(this);
-  }
+  return (
+    <List>
+    {sessions.map((session)=><Session 
+      key={session.id}
+      mock={session}
+      togglePopupHandler = {togglePopup}
+      />)}
 
-  _togglePopup(id){
-    this.setState({
-      showPopup: !this.state.showPopup,
-      currentId: id,
-    })
-  }
-
-  render(){
-    return (
-      <List>
-      {sessions.map((session)=><Session 
-        key={session.id}
-        mock={session}
-        togglePopupHandler = {this._togglePopup}
-        />)}
-
-        {this.state.showPopup && <Form currentId={this.state.currentId} sessions={sessions} togglePopupHandler = {this._togglePopup}/>}
-    </List>
-    );
-  }
+      {showPopup && <Form currentId={currentId} sessions={sessions} togglePopupHandler = {()=>togglePopup(currentId)}/>}
+  </List>
+  );
 };
+
+// class Sessions extends React.Component {
+//   constructor(props){
+//     super(props);
+
+//     this.state = {
+//       showPopup: false,
+//       currentId: 0,
+//     };
+
+//     this._togglePopup = this._togglePopup.bind(this);
+//   }
+
+//   _togglePopup(id){
+//     this.setState({
+//       showPopup: !this.state.showPopup,
+//       currentId: id,
+//     })
+//   }
+
+//   render(){
+//     return (
+//       <List>
+//       {sessions.map((session)=><Session 
+//         key={session.id}
+//         mock={session}
+//         togglePopupHandler = {this._togglePopup}
+//         />)}
+
+//         {this.state.showPopup && <Form currentId={this.state.currentId} sessions={sessions} togglePopupHandler = {this._togglePopup}/>}
+//     </List>
+//     );
+//   }
+// };
 
 export default Sessions;
