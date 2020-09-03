@@ -21,31 +21,29 @@ const Session = styled.li`
   }
 `;
 
-const Date = styled.span`
-  display:block;  
-  width: 15%;
-  height: 17px;
-  
-  border-radius: 5px; 
-  color: black;   
-`;
-
 const Type = styled.p`
-  width: 40%;
-  
+  width: 25%;  
   display: inline-block;  
   margin: 0;  
-  
   border-radius: 5px;
   color: black;  
 `;
 
-const Distance = styled(Type)`
+const Date = styled.span`
+  display:block;  
   width: 30%;
+  height: 17px;  
+  border-radius: 5px; 
+  color: black;   
+`;
+
+const Distance = styled(Type)`
+  width: 15%;
 `;
 
 const Info = styled.div` 
-  width: 15%;
+  width: 30%;
+  text-align: center; 
 `;
 
 export default ({session, togglePopupHandler}) => {
