@@ -13,6 +13,7 @@ const Sessions = (props) => {
   const {sessions} = props;
   const [showPopup, setShowPopup] = useState(false);
   const [currentId, setCurrentId] = useState(0);
+  console.log(sessions);
 
   const togglePopup = (id) => {
     setShowPopup(!showPopup);

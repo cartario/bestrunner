@@ -1,5 +1,11 @@
 import React from 'react';
+import { Spinner } from 'reactstrap';
 
-export default ()=>{
-  return <p>Loading...</p>;
+export default (props) => {
+  return (
+    <div>
+      <Spinner type="grow" color="primary" />
+      <p>Loading...</p>
+    </div>
+  );
 };

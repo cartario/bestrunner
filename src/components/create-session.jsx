@@ -1,8 +1,13 @@
 import React from 'react';
+import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
-
-import {mocks} from './sessions';
+import {getRandomInt} from '../utils';
+ 
+const Wrapper = styled.div`
+  width: 80%;
+  margin: 10px auto;
+`;
 
 export default class extends React.Component {
   constructor(props){
@@ -10,12 +15,11 @@ export default class extends React.Component {
 
     this.state = {
       id: 100,
-      type: ``,
+      type: `Велосипед`,
       distance: ``,
       comment: ``,
       date: new Date(),
     };
-
     this._changeHandler = this._changeHandler.bind(this);
     this._submitHandler = this._submitHandler.bind(this);    
   }
@@ -23,7 +27,7 @@ export default class extends React.Component {
   _submitHandler(e){
     e.preventDefault();
     this.props.createSession({
-      id: 102,
+      id: getRandomInt(1,100),
       type: this.state.type,
       distance: this.state.distance,
       comment: this.state.comment,
@@ -35,32 +39,49 @@ export default class extends React.Component {
     const name= e.target.name;    
     this.setState({
       [name]: e.target.value,
-    })
+    })    
   }
 
-  render() {
-    
-    return (<>
-      <Link to="/">go-back</Link>
-      <form onSubmit={this._submitHandler} style={{display: `flex`, width: `50%` ,flexDirection: `column`}}>
-        
-        <h2>form</h2>
-        
-        <p>Type</p>
-        <select  name="type" value={this.state.type} onChange={this._changeHandler}>
-          <option>Тип</option>
-          <option>Велосипед</option>
-          <option>Бег</option>
-          <option>Лыжи</option>
-          <option>Плавание</option>
-          <option>Ходьба</option>
-        </select>
-        <textarea required placeholder="distance" name="distance" value={this.state.distance} onChange={this._changeHandler}></textarea>
-        <textarea required placeholder="comment" name="comment" value={this.state.comment} onChange={this._changeHandler}></textarea>
-        <button>Send</button>
-  
-      </form>
-      </>
+  render() {    
+    return (
+      <Wrapper>
+        <Link to="/">Вернуться назад</Link>
+        <h2>Новая тренировка</h2>
+        <Form onSubmit={this._submitHandler}>
+          <FormGroup>
+            <Label for="type">Type</Label>
+            <Input type="select" name="type" id="type" defaultValue={this.state.type} onChange={this._changeHandler}>
+              <option>Велосипед</option>
+              <option>Бег</option>
+              <option>Лыжи</option>
+              <option>Плавание</option>
+              <option>Ходьба</option>
+            </Input>
+          </FormGroup>          
+          <FormGroup>
+            <Label for="distance">Distance, km</Label>
+            <Input type="number" min="0" name="distance" id="distance" placeholder="distance" required
+            value={this.state.distance} onChange={this._changeHandler}/>
+          </FormGroup>
+          <FormGroup>
+            <Label for="exampleDate">Date</Label>
+            <Input
+              type="date"
+              name="date"
+              id="exampleDate"
+              placeholder="date placeholder"
+              required
+            />
+          </FormGroup>
+          <FormGroup>
+            <Label for="comment">Comment</Label>
+            <Input type="textarea" name="comment" id="comment" 
+            value={this.state.comment} onChange={this._changeHandler}
+            />
+          </FormGroup>
+          <Button color="success">Добавить тренировку</Button>
+        </Form>
+      </Wrapper>
     );
   }
 };

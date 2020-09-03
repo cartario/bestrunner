@@ -30,7 +30,7 @@ const Item = styled.li`
 
 export default (props) => {
   return (
-    <List>
+    <List>      
       <Item width={40}>Type</Item>
       <Item width={15}>Date</Item>
       <Item width={15}>Distance</Item>      
