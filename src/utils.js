@@ -18,6 +18,16 @@ export const adapter = (data) => {
   }];
 };
 
+export const parseItemFromStorage = (data) => {
+  return {  
+    id: data.id,  
+    type: data.type,
+    date: new Date(data.date),
+    distance: data.distance,
+    comment: data.comment,
+  };
+};
+
 export const getRandomInt = (min, max)=> {  
   return Math.floor(min + Math.random() * (max + 1 - min));
 };

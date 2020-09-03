@@ -28,7 +28,7 @@ export const sessions = [
     distance: 7,
   },
   {
-    id: 5,
+    id: 51,
     type: `Ходьба`,
     date: new Date(),
     distance: 11,

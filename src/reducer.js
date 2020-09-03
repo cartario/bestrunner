@@ -1,28 +1,21 @@
-import {extend, adapter} from './utils.js';
+import {extend, adapter, parseItemFromStorage} from './utils.js';
 import {sessions} from './mock';
 import {history} from "./history.js";
 import {getItems, setItem, setItems, removeItem} from './local-storage';
 
-
-
-export const adapter2 = (data) => {
-  return {  
-    id: data.id,  
-    type: data.type,
-    date: new Date(data.date),
-    distance: data.distance,
-    comment: data.comment,
-  };
+const createStoreStructure = (items) => {
+  return items.reduce((acc, current) => {
+    return Object.assign({}, acc, {
+      [current.id]: current,
+    });
+  }, {});
 };
 
-
-if(getItems().length){
-  
-  const a = getItems().map((item)=>adapter2(item))
-  console.log(a)
-
-}
-
+const storageSessions = Object.values(getItems());
+const parsedSessionsFromStorage = storageSessions.map((session)=>parseItemFromStorage(session))
+// localStorage.clear();
+// console.log(createStoreStructure(sessions));
+console.log(parsedSessionsFromStorage);
 
 const initialState = {
   isDataReady: false,
@@ -64,6 +57,7 @@ export const Operation = {
   loadSessions: () => (dispatch, getState, api) => {    
     return api.get(`/users?page=2`).then((response) => {          
       dispatch(ActionCreator.loadSessions(adapter(response.data.data)));
+      dispatch(ActionCreator.loadSessions(parsedSessionsFromStorage));
       dispatch(ActionCreator.setIsDataReady(true));
                 
     })
@@ -78,13 +72,15 @@ export const reducer = (state = initialState, action) => {
   case ActionType.IS_DATA_READY:
     return extend(state, {isDataReady: action.payload});
 
-  case ActionType.LOAD_SESSIONS:    
+  case ActionType.LOAD_SESSIONS:
+        
     return extend(state, {sessions: [...state.sessions, ...action.payload]});
 
   case ActionType.CREATE_SESSION:
     // setItems(action.payload);
+    
     setItem(action.payload.id, action.payload);
-    debugger
+    
     history.goBack(); 
     return extend(state, {sessions: [...state.sessions, action.payload]});
 
