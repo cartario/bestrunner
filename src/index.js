@@ -10,6 +10,9 @@ import {Provider} from "react-redux";
 import thunkMiddleware from "redux-thunk";
 import {reducers} from "./reducers.js";
 import {ActionCreator, Operation} from './reducer';
+import {getItems, setItem, setItems, removeItem} from './local-storage';
+
+// localStorage.clear();
 
 const store = createStore(
   reducers, compose(

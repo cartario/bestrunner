@@ -2,12 +2,16 @@ import React, {useState} from 'react';
 import { Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Input} from 'reactstrap';
 import styled from 'styled-components';
 import {getDateFormat} from '../utils';
+import { connect } from 'react-redux';
+import {ActionCreator} from '../reducer';
 
-export default (props) => {
+const EditSession = (props) => {
   const {
     buttonLabel,
     className,
-    session
+    session,
+    editSession,
+    deleteSession
   } = props;
 
   const [modal, setModal] = useState(false);
@@ -32,11 +36,16 @@ export default (props) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    if(isDeleting){
-      console.log(`deleting`);
+    if(isDeleting){      
+      deleteSession(session.id);
       return;
     }
-    console.log(`edit`)
+
+    editSession({
+      id: session.id,
+      type: session.type,
+      comment, date, distance
+    });
   }
 
   const onDeleting = () => {
@@ -83,4 +92,16 @@ export default (props) => {
     </div>
   );
 };
+
+const mapDispatchToProps = (dispatch) => ({
+  editSession(session) {
+    dispatch(ActionCreator.editSession(session));
+  },
+  deleteSession(id) {
+    dispatch(ActionCreator.deleteSession(id));
+  },
+});
+
+export {EditSession};
+export default connect(null, mapDispatchToProps)(EditSession);
 

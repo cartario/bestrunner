@@ -24,7 +24,7 @@ const App = (props) => {
   if (!isDataReady) {
     return <Preloader/>;
   }
-
+  
   return (
     <HashRouter history={history}>
     <ThemeProvider theme={theme}>      
