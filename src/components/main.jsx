@@ -46,7 +46,7 @@ const Main = ({sessions}) => {
       <Sessions sessions = {sessions}/>
       <Chart/>      
       <Link to="/new">
-        <Button onClick={()=>console.log(`plus`)}>+</Button>
+        <Button>+</Button>
       </Link>
     </Wrapper>
   );

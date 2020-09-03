@@ -4,6 +4,10 @@ export const sessions = [
     type: `Велосипед`,
     date: new Date(),
     distance: 10,
+    comment: `  type="password"
+    name="password"
+    id="examplePassword"
+    placeholder="password placehold`
   },
   {
     id: 2,

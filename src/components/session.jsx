@@ -1,10 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
+import EditSession from './edit-delete-session';
+import {getDateFormat} from '../utils';
 
 const Session = styled.li`
   display: flex;
   justify-content: space-between;  
-  max-height: 50px;
+  min-height: 50px;
   margin: 5px 0; 
   padding: 10px;
   text-align: left;  
@@ -30,7 +32,7 @@ const Date = styled.span`
 
 const Type = styled.p`
   width: 40%;
-  height: 50px;
+  
   display: inline-block;  
   margin: 0;  
   
@@ -46,14 +48,14 @@ const Info = styled.div`
   width: 15%;
 `;
 
-export default ({mock, togglePopupHandler}) => {
+export default ({session, togglePopupHandler}) => {
   return (
     <Session>      
-      <Type>{mock.type}</Type>
-      <Date>{mock.date.getFullYear()}</Date>
-      <Distance>{mock.distance}km</Distance>
-      <Info onClick={()=>togglePopupHandler(mock.id)}>
-        <img width="15" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Info_Simple_bw.svg/768px-Info_Simple_bw.svg.png"/>
+      <Type>{session.type}</Type>
+      <Date>{getDateFormat(session.date)}</Date>
+      <Distance>{session.distance}km</Distance>
+      <Info onClick={()=>togglePopupHandler(session.id)}>        
+        <EditSession session={session} buttonLabel={`Подробнее`}/>
       </Info>
     </Session>
   );

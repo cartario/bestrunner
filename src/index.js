@@ -23,16 +23,19 @@ const localStorageSessions = [{
   type: `Плавание`,
   date: new Date(),
   distance: 8,
+  comment: `heyLocal`,
 },{
   id: 42,
   type: `Плавание`,
   date: new Date(),
   distance: 9,
+  comment: `howLocal`,
 },{
   id: 43,
   type: `Плавание`,
   date: new Date(),
   distance: 10,
+  comment: `areLocal`,
 }];
 
 store.dispatch(Operation.loadSessions());
