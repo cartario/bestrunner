@@ -14,10 +14,6 @@ const createStoreStructure = (items) => {
 const storageSessions = Object.values(getItems());
 const parsedSessionsFromStorage = storageSessions.map((session)=>parseItemFromStorage(session));
 
-// localStorage.clear();
-// console.log(createStoreStructure(sessions));
-console.log(createStoreStructure(sessions));
-
 const initialState = {
   isDataReady: false,
   sessions: [],
@@ -56,9 +52,11 @@ export const ActionCreator = {
 
 export const Operation = {
   loadSessions: () => (dispatch, getState, api) => {    
-    return api.get(`/users?page=2`).then((response) => {          
+    return api.get(`/users?page=2`).then((response) => {
+      const checkSession = adapter(response.data.data)[0];
+      setItem(checkSession.id, checkSession);
       dispatch(ActionCreator.loadSessions(adapter(response.data.data)));      
-      dispatch(ActionCreator.loadSessions(parsedSessionsFromStorage));
+      dispatch(ActionCreator.loadSessions(parsedSessionsFromStorage.filter((session)=>session.id!==checkSession.id)));
       dispatch(ActionCreator.setIsDataReady(true));                
     })
     .catch((err) => {      
@@ -73,15 +71,10 @@ export const reducer = (state = initialState, action) => {
     return extend(state, {isDataReady: action.payload});
 
   case ActionType.LOAD_SESSIONS:    
-    // setItems(createStoreStructure([...state.sessions, ...action.payload]));   
-    
     return extend(state, {sessions: [...state.sessions, ...action.payload]});
 
-  case ActionType.CREATE_SESSION:
-    // setItems(action.payload);
-    
-    setItem(action.payload.id, action.payload);
-    
+  case ActionType.CREATE_SESSION:       
+    setItem(action.payload.id, action.payload); //storage    
     history.goBack(); 
     return extend(state, {sessions: [...state.sessions, action.payload]});
 
@@ -93,11 +86,8 @@ export const reducer = (state = initialState, action) => {
         return false;
       }
 
-      const newSessions = [...state.sessions.slice(0, index), editSession, ...state.sessions.slice(index + 1)];
-
-     debugger;
-      setItems(createStoreStructure(newSessions));
-      
+      const newSessions = [...state.sessions.slice(0, index), editSession, ...state.sessions.slice(index + 1)];     
+      setItems(createStoreStructure(newSessions)); //storage      
     return extend(state, {sessions: newSessions});
 
   case ActionType.DELETE_SESSION:
