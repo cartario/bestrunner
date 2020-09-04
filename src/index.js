@@ -42,7 +42,7 @@ const localStorageSessions = [{
 }];
 
 store.dispatch(Operation.loadSessions());
-store.dispatch(ActionCreator.loadSessions(localStorageSessions));
+// store.dispatch(ActionCreator.loadSessions(localStorageSessions));
 
 ReactDOM.render(
   <Provider store={store}>
