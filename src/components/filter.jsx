@@ -28,12 +28,12 @@ const Item = styled.li`
   }
 `;
 
-export default (props) => {
+export default ({toggleSortUp}) => {
   return (
     <List>      
-      <Item width={25}>Type</Item>
-      <Item width={30}>Date</Item>
-      <Item width={15}>Distance</Item>      
+      <Item width={25} onClick={toggleSortUp}>Type</Item>
+      <Item width={30} onClick={toggleSortUp}>Date</Item>
+      <Item width={15} onClick={toggleSortUp}>Distance</Item>      
     </List>
   );
 };

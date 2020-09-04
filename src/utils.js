@@ -31,3 +31,26 @@ export const parseItemFromStorage = (data) => {
 export const getRandomInt = (min, max)=> {  
   return Math.floor(min + Math.random() * (max + 1 - min));
 };
+
+export const SortType = {
+  DISTANCE_UP: `DISTANCE_UP`,
+  DISTANCE_DOWN: `DISTANCE_DOWN`,
+  DATE_UP: `DATE_UP`,
+  DATE_DOWN: `DATE_DOWN`,
+};
+
+export const sort = (sortType, list) => {
+  switch(sortType){
+    case SortType.DISTANCE_UP:
+      return list.sort((a, b) => a.distance - b.distance);
+    case SortType.DISTANCE_DOWN:
+      return list.sort((a, b) => b.distance - a.distance);
+    case SortType.DATE_UP:
+      return list.sort((a, b) => a.date - b.date);
+    case SortType.DATE_DOWN:
+      return list.sort((a, b) => b.date - a.date);
+    default:
+      return list;
+  }
+};
+

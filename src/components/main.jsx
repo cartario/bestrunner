@@ -1,9 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
 import Sessions from './sessions';
 import Filter from './filter';
 import Chart from './chart';
 import {Link} from 'react-router-dom';
+import {sort, SortType} from '../utils';
 
 
 const Wrapper = styled.main`
@@ -38,11 +39,29 @@ const Button = styled.button`
 `;
 
 const Main = ({sessions}) => {
+
+  const [sortUp, setSortUp] = useState(true);
+  const [sortTarget, setSortTarget] = useState(`date`);
+
+  const toggleSortUp = (e) => {
+    const target = e.target.textContent.toLowerCase();    
+    setSortUp(!sortUp);
+    setSortTarget(target);
+  };
+
+  const getSortedSessions = (sortTarget, sortUp) => {
+    if(sortTarget === "date" || "type"){
+      return  sortUp ? sort(SortType.DATE_UP, sessions) : sort(SortType.DATE_DOWN, sessions);
+    }
+    return  sortUp ? sort(SortType.DISTANCE_UP, sessions) : sort(SortType.DISTANCE_DOWN, sessions);
+  };
+
+  getSortedSessions(sortTarget, sortUp);  
   
   return (
     <Wrapper>
       <h1 style={{display: `none`}}>BestRunner</h1>
-      <Filter/>
+      <Filter toggleSortUp={toggleSortUp}/>
       <Sessions sessions = {sessions}/>
       <Chart/>      
       <Link to="/new">
