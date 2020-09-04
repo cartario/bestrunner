@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/bestrunner/static/css/main.5ecd60fb.chunk.css",
-    "main.js": "/bestrunner/static/js/main.a82a1163.chunk.js",
-    "main.js.map": "/bestrunner/static/js/main.a82a1163.chunk.js.map",
+    "main.js": "/bestrunner/static/js/main.2bdf8fe5.chunk.js",
+    "main.js.map": "/bestrunner/static/js/main.2bdf8fe5.chunk.js.map",
     "runtime-main.js": "/bestrunner/static/js/runtime-main.52de4ca4.js",
     "runtime-main.js.map": "/bestrunner/static/js/runtime-main.52de4ca4.js.map",
     "static/css/2.d9ad5f5c.chunk.css": "/bestrunner/static/css/2.d9ad5f5c.chunk.css",
     "static/js/2.fbdb8226.chunk.js": "/bestrunner/static/js/2.fbdb8226.chunk.js",
     "static/js/2.fbdb8226.chunk.js.map": "/bestrunner/static/js/2.fbdb8226.chunk.js.map",
     "index.html": "/bestrunner/index.html",
-    "precache-manifest.f5bcc18f7f3a4450981045ea7f705dff.js": "/bestrunner/precache-manifest.f5bcc18f7f3a4450981045ea7f705dff.js",
+    "precache-manifest.633c93e95354c8728c012ff5a2a67e30.js": "/bestrunner/precache-manifest.633c93e95354c8728c012ff5a2a67e30.js",
     "service-worker.js": "/bestrunner/service-worker.js",
     "static/css/2.d9ad5f5c.chunk.css.map": "/bestrunner/static/css/2.d9ad5f5c.chunk.css.map",
     "static/css/main.5ecd60fb.chunk.css.map": "/bestrunner/static/css/main.5ecd60fb.chunk.css.map",
@@ -20,6 +20,6 @@
     "static/css/2.d9ad5f5c.chunk.css",
     "static/js/2.fbdb8226.chunk.js",
     "static/css/main.5ecd60fb.chunk.css",
-    "static/js/main.a82a1163.chunk.js"
+    "static/js/main.2bdf8fe5.chunk.js"
   ]
 }
