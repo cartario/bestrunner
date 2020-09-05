@@ -75,7 +75,7 @@ const Main = ({sessions}) => {
       <h1 style={{display: `none`}}>BestRunner</h1>
       <Filter toggleSortUp={toggleSortUp} sessions = {sessions} filterType={filterType} setFilterType={setFilterType}/>
       <Sessions sessions = {filteredSessions}/>
-      <Chart/>      
+      <Chart filteredSessions={filteredSessions}/>      
       <Link to="/new">
         <Button>+</Button>
       </Link>

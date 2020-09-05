@@ -1,30 +1,34 @@
 import React from 'react';
 import {Bar} from 'react-chartjs-2';
+import {getDateFormat} from '../utils';
+import styled from 'styled-components';
 
-export default (props)=>{
+const Wrapper = styled.section`
+  margin: 0;
+  padding: 10px;
+`;
 
-
+export default ({filteredSessions})=>{
   const state = {
-    labels: [`timeWork`,`timeFlight`,`timeBlock`,`timeNight`,`timeBiologicalNight`],
+    labels: filteredSessions.map((session)=>getDateFormat(session.date)),
     datasets: [
       { 
         barPercentage: 0.5,         
         backgroundColor: 'rgba(75,192,192,1)',
         borderColor: 'rgba(0,0,0,1)',
         borderWidth: 1,
-        data: [1,2,3,4,5],
+        data: filteredSessions.map((session)=>session.distance),
       }
     ]
   };
   return (
-    <section 
-    style={{margin:0, padding: `20px`,minHeight: `280px`}}>
+    <Wrapper>
       <Bar       
       data={state}
       options={{
         title:{
           display: true,
-          text:'Сводные данные за текущий период',
+          text:'Статистика по километражу',
           fontSize: 20
         },
         legend:{
@@ -32,6 +36,6 @@ export default (props)=>{
         },        
       }}
     />
-    </section>
+    </Wrapper>
   );
 };

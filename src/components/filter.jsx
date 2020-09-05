@@ -2,6 +2,17 @@ import React, {useState} from 'react';
 import styled from 'styled-components';
 import {getUniq} from '../utils';
 
+const Select = styled.select`
+  margin-left: 10px;
+  border-radius: 5px;
+
+
+  @media (max-width: ${props=>props.theme.mobile}){
+    margin-top: 25px;
+    margin-left: 0;
+  }  
+`;
+
 const List = styled.ul`
   display: flex;  
   width: 100%;
@@ -30,19 +41,17 @@ const Item = styled.li`
 `;
 
 export default ({toggleSortUp, sessions, filterType, setFilterType}) => {
-
-
-
-
-  
+  const [isShowing, setShowing] = useState(false);
 
   return (
-    <List>      
-      <Item width={25} onClick={toggleSortUp}>Type
-        <select value={filterType} onChange={(e)=>{setFilterType(e.target.value)}}>
+    <List>          
+      <Item width={25} onClick={()=>setShowing(!isShowing)}>Type
+      {isShowing&&
+        <Select value={filterType} onClick={(e)=>{e.stopPropagation()}} onChange={(e)=>{setFilterType(e.target.value)}}>
           <option>Все</option>
             {getUniq(sessions).map((type)=><option key={type}>{type}</option>)}
-        </select>
+        </Select>
+      }
       </Item>
       <Item width={30} onClick={toggleSortUp}>Date</Item>
       <Item width={15} onClick={toggleSortUp}>Distance</Item>      
