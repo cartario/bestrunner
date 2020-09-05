@@ -43,9 +43,11 @@ const Item = styled.li`
 export default ({toggleSortUp, sessions, filterType, setFilterType}) => {
   const [isShowing, setShowing] = useState(false);
 
+  const a = true;
+
   return (
     <List>          
-      <Item width={25} onClick={()=>setShowing(!isShowing)}>Type
+      <Item width={25} onClick={()=>setShowing(!isShowing)}>Type &rsaquo;
       {isShowing&&
         <Select value={filterType} onClick={(e)=>{e.stopPropagation()}} onChange={(e)=>{setFilterType(e.target.value)}}>
           <option>Все</option>
@@ -53,8 +55,8 @@ export default ({toggleSortUp, sessions, filterType, setFilterType}) => {
         </Select>
       }
       </Item>
-      <Item width={30} onClick={toggleSortUp}>Date</Item>
-      <Item width={15} onClick={toggleSortUp}>Distance</Item>      
+    <Item width={30} onClick={toggleSortUp}>Date &#11015;&#11014;</Item>
+      <Item width={15} onClick={toggleSortUp}>Distance &#11015;&#11014;</Item>      
     </List>
   );
 };

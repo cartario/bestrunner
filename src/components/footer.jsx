@@ -42,10 +42,10 @@ const Footer = () => {
     <Wrapper>
       <List>
         <Item>
-          <LinkItem href="#">[Copyright]</LinkItem>
+          <LinkItem href="https://wa.me/+79264915349">[Copyright]</LinkItem>
         </Item>
         <Item>
-          <LinkItem href="#">[Контакты]</LinkItem>
+          <LinkItem href="https://wa.me/+79264915349">[Контакты]</LinkItem>
         </Item>
         <Item>
           <LinkItem href="https://wa.me/+79264915349">[Обратная связь]</LinkItem>
