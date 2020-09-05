@@ -55,8 +55,6 @@ const Main = ({sessions}) => {
     filteredSessions = sessions.filter((session)=> session.type===filterType);
   }
 
-
-
   const toggleSortUp = (e) => {
     const target = e.target.textContent.toLowerCase();    
     setSortUp(!sortUp);

@@ -18,7 +18,7 @@ export default class extends React.Component {
       type: `Велосипед`,
       distance: ``,
       comment: ``,
-      date: new Date(),
+      date: ``,
     };
     this._changeHandler = this._changeHandler.bind(this);
     this._submitHandler = this._submitHandler.bind(this);    
@@ -31,7 +31,7 @@ export default class extends React.Component {
       type: this.state.type,
       distance: this.state.distance,
       comment: this.state.comment,
-      date: new Date(),
+      date: new Date (this.state.date),
     })    
   }
 
@@ -70,6 +70,8 @@ export default class extends React.Component {
               name="date"
               id="exampleDate"
               placeholder="date placeholder"
+              value={this.state.date}
+              onChange={this._changeHandler}
               required
             />
           </FormGroup>
