@@ -33,13 +33,19 @@ const Item = styled.li`
   }
 `;
 
+const LinkItem = styled.a`
+  color: white;
+`;
+
 const Footer = () => {
   return (
     <Wrapper>
       <List>
         <Item>[Copyright]</Item>
         <Item>[Социальные сети]</Item>
-        <Item>[Адрес]</Item>
+        <Item>
+          <LinkItem href="https://wa.me/+79264915349">[Обратная связь]</LinkItem>
+        </Item>
       </List>
     </Wrapper>
   );

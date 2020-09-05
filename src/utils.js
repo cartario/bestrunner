@@ -13,7 +13,7 @@ export const adapter = (data) => {
     id: data[0].id,  
     type: `servCheck`,
     date: new Date(),
-    distance: 101,
+    distance: 1,
     comment: `you?Serv`,
   }];
 };

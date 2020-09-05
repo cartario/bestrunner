@@ -4,8 +4,13 @@ import {getDateFormat} from '../utils';
 import styled from 'styled-components';
 
 const Wrapper = styled.section`
-  margin: 0;
+  width: 50%;
+  margin: 0 auto;
   padding: 10px;
+
+  @media (max-width: ${props=>props.theme.mobile}){
+    width: 100%;
+  }
 `;
 
 export default ({filteredSessions})=>{
@@ -13,11 +18,11 @@ export default ({filteredSessions})=>{
     labels: filteredSessions.map((session)=>getDateFormat(session.date)),
     datasets: [
       { 
-        barPercentage: 0.5,         
+        barPercentage: 1,         
         backgroundColor: 'rgba(75,192,192,1)',
         borderColor: 'rgba(0,0,0,1)',
         borderWidth: 1,
-        data: filteredSessions.map((session)=>session.distance),
+        data: filteredSessions.map((session)=>session.distance),        
       }
     ]
   };
@@ -34,6 +39,13 @@ export default ({filteredSessions})=>{
         legend:{
           display:false, 
         },        
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true,              
+            },            
+          }],          
+        }
       }}
     />
     </Wrapper>

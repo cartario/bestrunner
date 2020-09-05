@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Input} from 'reactstrap';
 import styled from 'styled-components';
-import {getDateFormat} from '../utils';
+import {getDateFormat, getUniq} from '../utils';
 import { connect } from 'react-redux';
 import {ActionCreator} from '../reducer';
 
@@ -11,13 +11,15 @@ const EditSession = (props) => {
     className,
     session,
     editSession,
-    deleteSession
+    deleteSession,
+    sessions
   } = props;
 
   const [modal, setModal] = useState(false);
   const [distance, setDistance] = useState(session.distance);
   const [comment, setComment] = useState(session.comment);
   const [date, setDate] = useState(session.date);
+  const [type, setType] = useState(session.type);
   const [isDeleting, setDeleting] = useState(false);
 
   const toggle = () => setModal(!modal);
@@ -34,6 +36,10 @@ const EditSession = (props) => {
     setComment(e.target.value);
   }
 
+  const onChangeType = (e) => {    
+    setType(e.target.value);
+  }
+
   const onSubmit = (e) => {
     e.preventDefault();
     if(isDeleting){      
@@ -42,9 +48,8 @@ const EditSession = (props) => {
     }
 
     editSession({
-      id: session.id,
-      type: session.type,
-      comment, date, distance
+      id: session.id,      
+      comment, date, distance, type
     });
   }
 
@@ -60,6 +65,18 @@ const EditSession = (props) => {
         <ModalHeader toggle={toggle}>Информация о тренировке: #{session.id} {session.type}</ModalHeader>
         <ModalBody>                 
           <Form onSubmit={onSubmit}>
+            <FormGroup>
+              <Label for="exampleSelect">Тип тренировки</Label>
+              <Input 
+                type="select" 
+                name="type" 
+                id="type" 
+                defaultValue={type}
+                onChange={onChangeType}>
+                {getUniq(sessions).filter((type)=>type !== `servCheck`).map((type)=>
+                <option key={type}>{type}</option>)}
+              </Input>
+            </FormGroup>
             <FormGroup>
               <Label for="date">Date: {getDateFormat(date)}</Label>
               <Input
@@ -93,6 +110,10 @@ const EditSession = (props) => {
   );
 };
 
+const mapStateToProps = (state) => ({
+  sessions: state.SESSIONS.sessions,
+});
+
 const mapDispatchToProps = (dispatch) => ({
   editSession(session) {
     dispatch(ActionCreator.editSession(session));
@@ -103,5 +124,5 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export {EditSession};
-export default connect(null, mapDispatchToProps)(EditSession);
+export default connect(mapStateToProps, mapDispatchToProps)(EditSession);
 
