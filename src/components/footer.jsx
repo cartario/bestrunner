@@ -22,7 +22,11 @@ const List = styled.ul`
 
 const Item = styled.li`
   padding: 10px;
-  cursor: pointer;
+  cursor: pointer;  
+`;
+
+const LinkItem = styled.a`
+  color: white;
 
   &:hover{
     color: ${props=>props.theme.secondary};
@@ -33,16 +37,16 @@ const Item = styled.li`
   }
 `;
 
-const LinkItem = styled.a`
-  color: white;
-`;
-
 const Footer = () => {
   return (
     <Wrapper>
       <List>
-        <Item>[Copyright]</Item>
-        <Item>[Социальные сети]</Item>
+        <Item>
+          <LinkItem href="#">[Copyright]</LinkItem>
+        </Item>
+        <Item>
+          <LinkItem href="#">[Контакты]</LinkItem>
+        </Item>
         <Item>
           <LinkItem href="https://wa.me/+79264915349">[Обратная связь]</LinkItem>
         </Item>
