@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "4f46a92864da1156c80602472c2c69a9",
+    "revision": "94115dded29cfa843d7af8217925aae1",
     "url": "/bestrunner/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/bestrunner/static/css/2.d9ad5f5c.chunk.css"
   },
   {
-    "revision": "18ccedc82b033288bfd1",
+    "revision": "3f13adea963edfeba7b1",
     "url": "/bestrunner/static/css/main.5ecd60fb.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/bestrunner/static/js/2.0c500741.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "18ccedc82b033288bfd1",
-    "url": "/bestrunner/static/js/main.54bc1810.chunk.js"
+    "revision": "3f13adea963edfeba7b1",
+    "url": "/bestrunner/static/js/main.95e62f76.chunk.js"
   },
   {
     "revision": "d5d7635fcea51b2b48f2",
