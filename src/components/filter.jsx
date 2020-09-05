@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
+import {getUniq} from '../utils';
 
 const List = styled.ul`
   display: flex;  
@@ -28,10 +29,21 @@ const Item = styled.li`
   }
 `;
 
-export default ({toggleSortUp}) => {
+export default ({toggleSortUp, sessions, filterType, setFilterType}) => {
+
+
+
+
+  
+
   return (
     <List>      
-      <Item width={25} onClick={toggleSortUp}>Type</Item>
+      <Item width={25} onClick={toggleSortUp}>Type
+        <select value={filterType} onChange={(e)=>{setFilterType(e.target.value)}}>
+          <option>Все</option>
+            {getUniq(sessions).map((type)=><option key={type}>{type}</option>)}
+        </select>
+      </Item>
       <Item width={30} onClick={toggleSortUp}>Date</Item>
       <Item width={15} onClick={toggleSortUp}>Distance</Item>      
     </List>

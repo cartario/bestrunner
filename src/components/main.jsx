@@ -41,7 +41,21 @@ const Button = styled.button`
 const Main = ({sessions}) => {
 
   const [sortUp, setSortUp] = useState(true);
+ 
   const [sortTarget, setSortTarget] = useState(`date`);
+
+  const [filterType, setFilterType] = useState(`Все`);
+
+  let filteredSessions;
+
+  if(filterType === `Все`){
+    
+    filteredSessions = sessions;
+  } else {
+    filteredSessions = sessions.filter((session)=> session.type===filterType);
+  }
+
+
 
   const toggleSortUp = (e) => {
     const target = e.target.textContent.toLowerCase();    
@@ -50,7 +64,7 @@ const Main = ({sessions}) => {
   };
 
   const getSortedSessions = (sortTarget, sortUp) => {
-    if(sortTarget === "date" || "type"){
+    if(sortTarget === "date" || sortTarget === "type"){
       return  sortUp ? sort(SortType.DATE_UP, sessions) : sort(SortType.DATE_DOWN, sessions);
     }
     return  sortUp ? sort(SortType.DISTANCE_UP, sessions) : sort(SortType.DISTANCE_DOWN, sessions);
@@ -61,8 +75,8 @@ const Main = ({sessions}) => {
   return (
     <Wrapper>
       <h1 style={{display: `none`}}>BestRunner</h1>
-      <Filter toggleSortUp={toggleSortUp}/>
-      <Sessions sessions = {sessions}/>
+      <Filter toggleSortUp={toggleSortUp} sessions = {sessions} filterType={filterType} setFilterType={setFilterType}/>
+      <Sessions sessions = {filteredSessions}/>
       <Chart/>      
       <Link to="/new">
         <Button>+</Button>

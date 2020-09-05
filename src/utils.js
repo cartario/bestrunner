@@ -54,3 +54,8 @@ export const sort = (sortType, list) => {
   }
 };
 
+export const getUniq = (sessions) => {
+  
+  return [...new Set(sessions.map((session)=>session.type))];
+};
+
