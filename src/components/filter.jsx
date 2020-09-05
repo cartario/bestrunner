@@ -55,8 +55,8 @@ export default ({toggleSortUp, sessions, filterType, setFilterType}) => {
         </Select>
       }
       </Item>
-    <Item width={30} onClick={toggleSortUp}>Date &#11015;&#11014;</Item>
-      <Item width={15} onClick={toggleSortUp}>Distance &#11015;&#11014;</Item>      
+    <Item width={30} onClick={toggleSortUp}>Date &uarr;&darr;</Item>
+      <Item width={35} onClick={toggleSortUp}>Distance &uarr;&darr;</Item>      
     </List>
   );
 };
