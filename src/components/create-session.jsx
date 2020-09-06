@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {Formik} from 'formik';
 import * as yup from 'yup';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
@@ -57,10 +58,10 @@ const validationSchema = yup.object({
   type: yup.string().required(`Это поле обязательное`),
   date: yup.date().required(`Это поле обязательное`),
   distance: yup 
-    .number().required(`Это поле обязательное`).min(0, `Должно быть больше нуля`).max(100, `Это уже перебор`)
+    .number().required(`Это поле обязательное`).min(0, `Должно быть больше нуля`).max(100, `Это уже перебор. Максимум 100`)
 });
 
-export default ({createSession}) => {
+const CreateSession = ({createSession}) => {
   return (
     <Wrapper>
         <Link to="/">Вернуться назад</Link>
@@ -74,16 +75,16 @@ export default ({createSession}) => {
             createSession({
               id: getRandomInt(1,100),
               type: data.type,
-              distance: data.distance,
+              distance: Number(data.distance),
               comment: data.comment,
               date: new Date (data.date),
             });
 
             setSubmitting(false);
-            resetForm();
+            resetForm();            
         }}>
           {({values, errors, touched, isSubmitting, handleChange, handleBlur, handleSubmit})=>(
-            <Form onSubmit={handleSubmit}>
+            <Form onSubmit={handleSubmit}>              
             <FormGroup>
               <Label for="type">Type</Label>
               <Input type="select" name="type" id="type" value={values.type} onChange={handleChange} onBlur={handleBlur}
@@ -127,3 +128,10 @@ export default ({createSession}) => {
       </Wrapper>
   );
 };
+
+
+CreateSession.propTypes = {
+  createSession: PropTypes.func.isRequired,
+};
+
+export default CreateSession;

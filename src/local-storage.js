@@ -27,3 +27,20 @@ export const removeItem=(key)=> {
   );
 }
 
+export const parseItemFromStorage = (data) => {
+  return {  
+    id: data.id,  
+    type: data.type,
+    date: new Date(data.date),
+    distance: data.distance,
+    comment: data.comment,
+  };
+};
+
+export const createStoreStructure = (items) => {
+  return items.reduce((acc, current) => {
+    return Object.assign({}, acc, {
+      [current.id]: current,
+    });
+  }, {});
+};

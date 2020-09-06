@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import PropTypes from "prop-types";
 import styled from 'styled-components';
 import Sessions from './sessions';
 import Filter from './filter';
@@ -75,6 +76,18 @@ const Main = ({sessions}) => {
       </Link>
     </Wrapper>
   );
+};
+
+Main.propTypes = {
+  sessions: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      type: PropTypes.string.isRequired,
+      distance: PropTypes.number,
+      date: PropTypes.instanceOf(Date).isRequired,
+      comment: PropTypes.string.isRequired,
+    })
+  ),
 };
 
 export default Main;

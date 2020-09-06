@@ -1,14 +1,6 @@
-import {extend, adapter, parseItemFromStorage} from './utils.js';
+import {extend, adapter} from './utils.js';
 import {history} from "./history.js";
-import {getItems, setItem, setItems, removeItem} from './local-storage';
-
-const createStoreStructure = (items) => {
-  return items.reduce((acc, current) => {
-    return Object.assign({}, acc, {
-      [current.id]: current,
-    });
-  }, {});
-};
+import {getItems, setItem, setItems, removeItem, parseItemFromStorage, createStoreStructure} from './local-storage';
 
 const storageSessions = Object.values(getItems());
 const parsedSessionsFromStorage = storageSessions.map((session)=>parseItemFromStorage(session));
@@ -89,8 +81,7 @@ export const reducer = (state = initialState, action) => {
       setItems(createStoreStructure(newSessions)); //storage      
     return extend(state, {sessions: newSessions});
 
-  case ActionType.DELETE_SESSION:
-    
+  case ActionType.DELETE_SESSION:    
     removeItem(action.payload); //storage
     const sessionsFiltered = state.sessions.filter((session)=>session.id!==action.payload)  
     return extend(state, {sessions: sessionsFiltered});

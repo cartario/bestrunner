@@ -1,17 +1,17 @@
 import React, {useState} from 'react';
+import PropTypes from "prop-types";
 import { Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Input} from 'reactstrap';
-import {getDateFormat, getUniq} from '../utils';
+import {getDateFormat} from '../utils';
+import {TypeNames} from '../const';
 import { connect } from 'react-redux';
 import {ActionCreator} from '../reducer';
 
 const EditSession = (props) => {
   const {
     buttonLabel,
-    className,
     session,
     editSession,
-    deleteSession,
-    sessions
+    deleteSession,    
   } = props;
 
   const [modal, setModal] = useState(false);
@@ -48,7 +48,7 @@ const EditSession = (props) => {
 
     editSession({
       id: session.id,      
-      comment, date, distance, type
+      comment, date, distance: Number(distance), type
     });
   }
 
@@ -60,7 +60,7 @@ const EditSession = (props) => {
   return (
     <div>
       <Button color="info" onClick={toggle}>{buttonLabel}</Button>
-      <Modal isOpen={modal} toggle={toggle} className={className}>
+      <Modal isOpen={modal} toggle={toggle} >
         <ModalHeader toggle={toggle}>Информация о тренировке: #{session.id} {session.type}</ModalHeader>
         <ModalBody>                 
           <Form onSubmit={onSubmit}>
@@ -72,7 +72,7 @@ const EditSession = (props) => {
                 id="type" 
                 defaultValue={type}
                 onChange={onChangeType}>
-                {getUniq(sessions).filter((type)=>type !== `servCheck`).map((type)=>
+                {TypeNames.map((type)=>
                 <option key={type}>{type}</option>)}
               </Input>
             </FormGroup>
@@ -122,6 +122,18 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
+EditSession.propTypes = {
+  editSession: PropTypes.func.isRequired,
+  deleteSession: PropTypes.func.isRequired,
+  session: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    type: PropTypes.string.isRequired,
+    distance: PropTypes.number,
+    date: PropTypes.instanceOf(Date).isRequired,
+    comment: PropTypes.string.isRequired,
+  }),  
+  buttonLabel: PropTypes.string.isRequired,
+};
+
 export {EditSession};
 export default connect(mapStateToProps, mapDispatchToProps)(EditSession);
-

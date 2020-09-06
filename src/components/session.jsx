@@ -47,6 +47,7 @@ const Info = styled.div`
 `;
 
 export default ({session}) => {
+  
   return (
     <Session>      
       <Type>{session.type}</Type>

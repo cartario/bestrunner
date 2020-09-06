@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from "prop-types";
 import {HashRouter, Route} from 'react-router-dom';
 import {ThemeProvider} from 'styled-components';
 import Header from './header';
@@ -9,15 +10,7 @@ import Preloader from './preloader';
 import { connect } from 'react-redux';
 import {ActionCreator} from '../reducer';
 import {history} from '../history.js';
-
-const theme = {
-  primary: `#3B5AF5`,
-  secondary: `tomato`,
-  pink: `#F9057C`,
-  bgc: `white`,
-  mobile: `660px`,
-  font: `Poppins`,
-};
+import {theme} from '../const';
 
 const App = (props) => {
   const {isDataReady, sessions, createSession} = props;  
@@ -51,6 +44,20 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(ActionCreator.createSession(newSession));
   },
 });
+
+App.propTypes = {
+  isDataReady: PropTypes.bool.isRequired,
+  sessions: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      type: PropTypes.string.isRequired,
+      distance: PropTypes.number,
+      date: PropTypes.instanceOf(Date).isRequired,
+      comment: PropTypes.string.isRequired,
+    })
+  ),
+  createSession: PropTypes.func.isRequired,
+};
 
 export {App};
 export default connect(mapStateToProps, mapDispatchToProps)(App);
