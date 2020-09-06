@@ -1,3 +1,9 @@
+ДЛЯ ЗАПУСКА НЕОБХОДИМО :
+1.установить create-react-app
+2.командой npm i установить зависимости
+3.npm start запускает приложение
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
