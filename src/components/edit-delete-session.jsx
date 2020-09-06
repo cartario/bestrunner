@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import { Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Input} from 'reactstrap';
-import styled from 'styled-components';
 import {getDateFormat, getUniq} from '../utils';
 import { connect } from 'react-redux';
 import {ActionCreator} from '../reducer';
@@ -66,7 +65,7 @@ const EditSession = (props) => {
         <ModalBody>                 
           <Form onSubmit={onSubmit}>
             <FormGroup>
-              <Label for="exampleSelect">Тип тренировки</Label>
+              <Label for="type">Тип тренировки</Label>
               <Input 
                 type="select" 
                 name="type" 

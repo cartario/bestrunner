@@ -5,6 +5,7 @@ import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
 import {getRandomInt} from '../utils';
+import {TypeNames} from '../const';
  
 const Wrapper = styled.div`
   width: 80%;
@@ -87,13 +88,10 @@ export default ({createSession}) => {
               <Label for="type">Type</Label>
               <Input type="select" name="type" id="type" value={values.type} onChange={handleChange} onBlur={handleBlur}
               valid={!errors.type && touched.type}
-              >
-                <option>Велосипед</option>
-                <option>Бег</option>
-                <option>Лыжи</option>
-                <option>Плавание</option>
-                <option>Ходьба</option>
-              </Input>
+              > 
+                <option></option>
+                {TypeNames.map((type)=><option key={type}>{type}</option>)}
+              </Input>          
               {touched.type && errors.type && <ErrorField>{errors.type}</ErrorField>}
             </FormGroup>          
             <FormGroup>

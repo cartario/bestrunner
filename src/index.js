@@ -9,10 +9,7 @@ import {createStore, compose, applyMiddleware} from "redux";
 import {Provider} from "react-redux";
 import thunkMiddleware from "redux-thunk";
 import {reducers} from "./reducers.js";
-import {ActionCreator, Operation} from './reducer';
-import {getItems, setItem, setItems, removeItem} from './local-storage';
-
-// localStorage.clear();
+import {Operation} from './reducer';
 
 const store = createStore(
   reducers, compose(
@@ -21,28 +18,7 @@ const store = createStore(
   )
 );
 
-const localStorageSessions = [{
-  id: 41,
-  type: `Плавание`,
-  date: new Date(),
-  distance: 8,
-  comment: `heyLocal`,
-},{
-  id: 42,
-  type: `Плавание`,
-  date: new Date(),
-  distance: 9,
-  comment: `howLocal`,
-},{
-  id: 43,
-  type: `Плавание`,
-  date: new Date(),
-  distance: 10,
-  comment: `areLocal`,
-}];
-
 store.dispatch(Operation.loadSessions());
-// store.dispatch(ActionCreator.loadSessions(localStorageSessions));
 
 ReactDOM.render(
   <Provider store={store}>

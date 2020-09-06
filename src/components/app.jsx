@@ -7,7 +7,7 @@ import Footer from './footer';
 import CreateSession from './create-session';
 import Preloader from './preloader';
 import { connect } from 'react-redux';
-import {ActionCreator, Operation} from '../reducer';
+import {ActionCreator} from '../reducer';
 import {history} from '../history.js';
 
 const theme = {

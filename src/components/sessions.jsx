@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import Session from './session';
 
@@ -8,27 +8,24 @@ const List = styled.ul`
   list-style: none;
 `;
 
+const Info = styled.div`
+  padding: 50px;
+  font-size: 30px;
+  background-color: ${props=> props.theme.pink};
+  color: white;
+`;
+
 const Sessions = (props) => {
-  const {sessions} = props;
-  const [showPopup, setShowPopup] = useState(false);
-  const [currentId, setCurrentId] = useState(0);
-  
-  const togglePopup = (id) => {
-    setShowPopup(!showPopup);
-    setCurrentId(id);
-  };
+  const {filteredSessions: sessions} = props;
 
   return (
     <List>
-    {sessions.map((session)=><Session 
+    {sessions.length ? sessions.map((session)=><Session 
       key={session.id}
-      session={session}
-      togglePopupHandler = {togglePopup}
-      />)}       
-  </List>
+      session={session}      
+      />) : <Info>Самое время добавить свою первую тренировку</Info>}       
+    </List>
   );
 };
 
 export default Sessions;
-
-// {showPopup && <Form currentId={currentId} sessions={sessions} togglePopupHandler = {()=>togglePopup(currentId)}/>}

@@ -11,8 +11,6 @@ const Nav = styled.nav`
   color: white; 
   cursor: pointer; 
   background-color: ${props=>props.theme.primary};  
-
-  
 `;
 
 const Logo = styled.div`

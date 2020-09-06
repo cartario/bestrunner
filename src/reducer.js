@@ -1,5 +1,4 @@
 import {extend, adapter, parseItemFromStorage} from './utils.js';
-import {sessions} from './mock';
 import {history} from "./history.js";
 import {getItems, setItem, setItems, removeItem} from './local-storage';
 

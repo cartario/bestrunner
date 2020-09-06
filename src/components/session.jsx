@@ -46,13 +46,13 @@ const Info = styled.div`
   text-align: center; 
 `;
 
-export default ({session, togglePopupHandler}) => {
+export default ({session}) => {
   return (
     <Session>      
       <Type>{session.type}</Type>
       <Date>{getDateFormat(session.date)}</Date>
       <Distance>{session.distance}km</Distance>
-      <Info onClick={()=>togglePopupHandler(session.id)}>        
+      <Info>        
         <EditSession session={session} buttonLabel={`Подробнее`}/>
       </Info>
     </Session>

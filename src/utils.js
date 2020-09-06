@@ -1,3 +1,5 @@
+import {SortType} from './const'; 
+
 export const extend = (oldData, newData) => {
   return Object.assign({}, oldData, newData);
 };
@@ -14,7 +16,7 @@ export const adapter = (data) => {
     type: `servCheck`,
     date: new Date(),
     distance: 1,
-    comment: `you?Serv`,
+    comment: `Мои данные с сервера`,
   }];
 };
 
@@ -32,13 +34,6 @@ export const getRandomInt = (min, max)=> {
   return Math.floor(min + Math.random() * (max + 1 - min));
 };
 
-export const SortType = {
-  DISTANCE_UP: `DISTANCE_UP`,
-  DISTANCE_DOWN: `DISTANCE_DOWN`,
-  DATE_UP: `DATE_UP`,
-  DATE_DOWN: `DATE_DOWN`,
-};
-
 export const sort = (sortType, list) => {
   switch(sortType){
     case SortType.DISTANCE_UP:
@@ -54,8 +49,14 @@ export const sort = (sortType, list) => {
   }
 };
 
-export const getUniq = (sessions) => {
-  
+export const getSortedSessions = (sortTarget, sortUp, sessions) => {  
+  if(sortTarget === SortType.DATE || sortTarget === SortType.TYPE){    
+    return  sortUp ? sort(SortType.DATE_UP, sessions) : sort(SortType.DATE_DOWN, sessions);
+  }
+  return  sortUp ? sort(SortType.DISTANCE_UP, sessions) : sort(SortType.DISTANCE_DOWN, sessions);
+};
+
+export const getUniq = (sessions) => {  
   return [...new Set(sessions.map((session)=>session.type))];
 };
 

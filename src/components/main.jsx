@@ -4,13 +4,17 @@ import Sessions from './sessions';
 import Filter from './filter';
 import Chart from './chart';
 import {Link} from 'react-router-dom';
-import {sort, SortType} from '../utils';
-
+import {getSortedSessions} from '../utils';
+import {Pages, SortType} from '../const';
 
 const Wrapper = styled.main`
   text-align: center;
   font-family: ${props=>props.theme.font}; 
   background-color: white; 
+`;
+
+const Title = styled.h1`
+  display: none;
 `;
 
 const Button = styled.button`
@@ -39,17 +43,12 @@ const Button = styled.button`
 `;
 
 const Main = ({sessions}) => {
-
-  const [sortUp, setSortUp] = useState(true);
- 
-  const [sortTarget, setSortTarget] = useState(`date`);
-
-  const [filterType, setFilterType] = useState(`Все`);
+  const [sortUp, setSortUp] = useState(true); 
+  const [sortTarget, setSortTarget] = useState(SortType.DATE);
+  const [filterType, setFilterType] = useState(SortType.ALL);
 
   let filteredSessions;
-
-  if(filterType === `Все`){
-    
+  if(filterType === SortType.ALL){    
     filteredSessions = sessions;
   } else {
     filteredSessions = sessions.filter((session)=> session.type===filterType);
@@ -61,22 +60,17 @@ const Main = ({sessions}) => {
     setSortTarget(target);
   };
 
-  const getSortedSessions = (sortTarget, sortUp) => {
-    if(sortTarget === "date" || sortTarget === "type"){
-      return  sortUp ? sort(SortType.DATE_UP, sessions) : sort(SortType.DATE_DOWN, sessions);
-    }
-    return  sortUp ? sort(SortType.DISTANCE_UP, sessions) : sort(SortType.DISTANCE_DOWN, sessions);
-  };
-
-  getSortedSessions(sortTarget, sortUp);  
+  const correctSortTarget = sortTarget.slice(0, sortTarget.length - 3); // поправка из-за спецсимволов
+  getSortedSessions(correctSortTarget, sortUp, filteredSessions);  
   
   return (
-    <Wrapper>
-      <h1 style={{display: `none`}}>BestRunner</h1>
+  
+    <Wrapper>      
+      <Title>BestRunner</Title>
       <Filter toggleSortUp={toggleSortUp} sessions = {sessions} filterType={filterType} setFilterType={setFilterType}/>
-      <Sessions sessions = {filteredSessions}/>
+      <Sessions filteredSessions = {filteredSessions}/>
       <Chart filteredSessions={filteredSessions}/>      
-      <Link to="/new">
+      <Link to={Pages.NEW}>
         <Button>+</Button>
       </Link>
     </Wrapper>
